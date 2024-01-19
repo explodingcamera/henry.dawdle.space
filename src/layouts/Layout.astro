@@ -11,18 +11,20 @@ const url = new URL(Astro.request.url);
 <Base {...props}>
   <slot name="head" slot="head" />
   <header>
-    <!-- <div class="online">
-      <span>{0}</span> users connected
-    </div> -->
     <ul>
+      <li><a href="/"><h2>henry.dawdle.space</h2></a></li>
       <li>
-        <h1>~henry</h1>
+        <a href="/posts" data-active={url.pathname === "/posts"}>posts</a>
+      </li>
+      <li>
+        <a href="/photos" data-active={url.pathname === "/photos"}>photos</a>
+      </li>
+      <li>
+        <a href="/things" data-active={url.pathname === "/things"}>things</a>
       </li>
     </ul>
   </header>
-  <div class="page">
-    <slot />
-  </div>
+  <slot />
 </Base>
 
 <style>
@@ -30,6 +32,29 @@ const url = new URL(Astro.request.url);
     ul {
       display: flex;
       list-style: none;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      padding: 1rem 1.5rem;
+
+      li:first-of-type {
+        margin-right: auto;
+
+        a {
+          text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+          h2 {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
     }
   }
 </style>

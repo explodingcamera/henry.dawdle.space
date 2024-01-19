@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+import underConstruction from "../gifs/under_constructionA.gif";
+---
+
+<Layout title="Photos">
+  <main>
+    <Image src={underConstruction} alt="under construction" />
+  </main>
+</Layout>
+
+<style>
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

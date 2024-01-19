@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+import cat from "../gifs/cat_mail.gif";
+---
+
+<Layout title="404">
+  <main>
+    <Image src={cat} alt="sad cat" />
+    <pre>Three things are certain:
+Death, taxes, and site not found.
+Guess which has occurred.
+    </pre>
+  </main>
+</Layout>
+
+<style>
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

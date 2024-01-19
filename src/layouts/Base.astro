@@ -22,9 +22,33 @@ const { title, maxWidth } = Astro.props;
   </head>
   <body>
     <slot />
-    <style define:vars={{ maxWidth }}>
-      :global(body) {
-        --max-width: var(--maxWidth);
+    <a class="dawdle" target="_blank" href="https://dawdle.space"
+      >hosted on dawdle.space</a
+    >
+    <a
+      class="imprint"
+      target="_blank"
+      href="https://henrygressmann.de/impressum">imprint</a
+    >
+    <style>
+      .imprint {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 1rem 1.2rem;
+        font-size: 0.9rem;
+        color: #a3a3a3;
+        text-decoration: none;
+      }
+
+      .dawdle {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 1rem 1.2rem;
+        font-size: 0.9rem;
+        color: #a3a3a3;
+        text-decoration: none;
       }
     </style>
   </body>
