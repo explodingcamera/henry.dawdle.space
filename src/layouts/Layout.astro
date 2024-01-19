@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+interface Props {
+  title: string;
+  maxWidth?: string;
+}
+const props = Astro.props;
+const url = new URL(Astro.request.url);
+---
+
+<Base {...props}>
+  <slot name="head" slot="head" />
+  <header>
+    <!-- <div class="online">
+      <span>{0}</span> users connected
+    </div> -->
+    <ul>
+      <li>
+        <h1>~henry</h1>
+      </li>
+    </ul>
+  </header>
+  <div class="page">
+    <slot />
+  </div>
+</Base>
+
+<style>
+  header {
+    ul {
+      display: flex;
+      list-style: none;
+    }
+  }
+</style>

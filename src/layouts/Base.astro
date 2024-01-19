@@ -1,0 +1,31 @@
+---
+import "@fontsource-variable/victor-mono";
+import { ViewTransitions } from "astro:transitions";
+import "./../global.css";
+
+interface Props {
+  title: string;
+  maxWidth?: string;
+}
+
+const { title, maxWidth } = Astro.props;
+---
+
+<html lang="en" transition:animate="none">
+  <head>
+    <ViewTransitions />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="data:," />
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+    <style define:vars={{ maxWidth }}>
+      :global(body) {
+        --max-width: var(--maxWidth);
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.2",
+    "@astrojs/sitemap": "^3.0.5",
+    "@fontsource-variable/victor-mono": "^5.0.3",
+    "astro": "^4.2.1",
+    "postcss-preset-env": "^9.3.0",
+    "typescript": "^5.3.3"
+  }
+}
