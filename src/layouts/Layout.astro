@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 interface Props {
   title: string;
   maxWidth?: string;
+  floatingHeader?: boolean;
 }
 const props = Astro.props;
 const url = new URL(Astro.request.url);
@@ -10,7 +11,7 @@ const url = new URL(Astro.request.url);
 
 <Base {...props}>
   <slot name="head" slot="head" />
-  <header>
+  <header data-floating={props.floatingHeader && "true"}>
     <ul>
       <li><a href="/"><h2>henry.dawdle.space</h2></a></li>
       <li>
@@ -28,6 +29,14 @@ const url = new URL(Astro.request.url);
 </Base>
 
 <style>
+  header[data-floating="true"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
   header {
     ul {
       display: flex;
