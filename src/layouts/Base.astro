@@ -1,14 +1,14 @@
 ---
 import "@fontsource-variable/victor-mono";
 import { ViewTransitions } from "astro:transitions";
+import "@explodingcamera/css/all.css";
 import "./../global.css";
 
 interface Props {
   title: string;
-  maxWidth?: string;
 }
 
-const { title, maxWidth } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en" transition:animate="none">
