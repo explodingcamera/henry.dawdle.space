@@ -10,15 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.4",
+    "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.0.5",
     "@explodingcamera/css": "^0.0.2",
     "@fontsource-variable/victor-mono": "^5.0.3",
-    "astro": "^4.3.2",
+    "@types/three": "^0.161.2",
+    "astro": "^4.3.3",
     "postcss-preset-env": "^9.3.0",
+    "postprocessing": "^6.34.2",
+    "three": "^0.161.0",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.4"
+    "@types/bun": "^1.0.5"
   }
 }
