@@ -30,7 +30,7 @@
     75,
     canvas.clientWidth / canvas.clientHeight,
     0.1,
-    1000
+    1000,
   );
   camera.position.z = 1.9;
   camera.aspect = 1;
@@ -49,8 +49,8 @@
         color: "#c0f1ea",
         characters: " +**o!:,.",
         fontSize: 50,
-      })
-    )
+      }),
+    ),
   );
 
   let lastTime = 0;
@@ -68,8 +68,7 @@
 <style>
   canvas {
     width: 35rem;
-    max-width: calc(100% - 2rem);
-    margin-bottom: 2rem;
+    max-width: 30vmax;
     aspect-ratio: 1 / 1;
   }
 </style>
