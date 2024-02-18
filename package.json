@@ -12,16 +12,16 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.0.5",
-    "@explodingcamera/css": "^0.0.2",
+    "@explodingcamera/css": "^0.0.4",
     "@fontsource-variable/victor-mono": "^5.0.3",
     "@types/three": "^0.161.2",
-    "astro": "^4.3.3",
+    "astro": "^4.4.0",
     "postcss-preset-env": "^9.3.0",
-    "postprocessing": "^6.34.2",
+    "postprocessing": "^6.34.3",
     "three": "^0.161.0",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.5"
+    "@types/bun": "^1.0.6"
   }
 }
