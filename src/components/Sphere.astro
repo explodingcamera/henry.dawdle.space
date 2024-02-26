@@ -9,60 +9,6 @@
   import { ASCIIEffect } from "./ascii";
   import { createSphere } from "./sphere";
 
-  const canvas = document.getElementById("cube");
-  if (!canvas) {
-    console.error("Canvas element not found");
-    throw new Error("Canvas element not found");
-  }
-
-  const renderer = new WebGLRenderer({
-    powerPreference: "low-power",
-    antialias: false,
-    stencil: false,
-    depth: false,
-    alpha: true,
-    canvas,
-  });
-  renderer.setClearColor(0x000000, 0);
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-
-  const camera = new PerspectiveCamera(
-    75,
-    canvas.clientWidth / canvas.clientHeight,
-    0.1,
-    1000
-  );
-  camera.position.z = 1.9;
-  camera.aspect = 1;
-
-  const scene = new Scene();
-  const sphere = createSphere();
-  scene.add(sphere);
-
-  const composer = new EffectComposer(renderer);
-  composer.addPass(new RenderPass(scene, camera));
-  composer.addPass(
-    new EffectPass(
-      camera,
-      new ASCIIEffect({
-        cellSize: 7,
-        color: "#c0f1ea",
-        characters: " +**o!:,.",
-        fontSize: 50,
-      })
-    )
-  );
-
-  // let lastTime = 0;
-  // requestAnimationFrame(function render(time) {
-  //   const timeInSeconds = time * 0.001;
-  //   const deltaTime = timeInSeconds - lastTime;
-  //   lastTime = timeInSeconds;
-  //   sphere.rotation.y += deltaTime * 0.08;
-  //   sphere.rotation.x += deltaTime * 0.02;
-  //   composer.render();
-  //   requestAnimationFrame(render);
-  // });
   const baseRotationSpeed = { x: 0.02, y: 0.08 };
   const dragSensitivity = 0.2;
   const momentumDecay = 0.98;
@@ -72,12 +18,6 @@
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
   let lastDragTime = 0;
-
-  canvas.addEventListener("pointerdown", (event) => {
-    isDragging = true;
-    dragStart.x = event.clientX;
-    dragStart.y = event.clientY;
-  });
 
   window.addEventListener("pointermove", (event) => {
     if (isDragging) {
@@ -92,8 +32,63 @@
   window.addEventListener("pointerup", () => {
     isDragging = false;
   });
+  const sphere = createSphere();
 
-  requestAnimationFrame(function render(time) {
+  const createRenderer = (canvas: HTMLElement | null) => {
+    if (!canvas) {
+      console.error("Canvas element not found");
+      throw new Error("Canvas element not found");
+    }
+
+    canvas.addEventListener("pointerdown", (event) => {
+      isDragging = true;
+      dragStart.x = event.clientX;
+      dragStart.y = event.clientY;
+    });
+
+    const renderer = new WebGLRenderer({
+      powerPreference: "low-power",
+      antialias: false,
+      stencil: false,
+      depth: false,
+      alpha: true,
+      canvas,
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+
+    const camera = new PerspectiveCamera(
+      75,
+      canvas.clientWidth / canvas.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = 1.9;
+    camera.aspect = 1;
+
+    const scene = new Scene();
+    scene.add(sphere);
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    composer.addPass(
+      new EffectPass(
+        camera,
+        new ASCIIEffect({
+          cellSize: 7,
+          color: "#c0f1ea",
+          characters: " +**o!:,.",
+          fontSize: 50,
+        })
+      )
+    );
+    return composer;
+  };
+
+  let active = true;
+  let composer = createRenderer(document.getElementById("cube"));
+
+  const render = (time: DOMHighResTimeStamp) => {
     const timeInSeconds = time * 0.001;
     const deltaTime = timeInSeconds - lastTime;
     lastTime = timeInSeconds;
@@ -114,7 +109,17 @@
       : (baseRotationSpeed.x + dragRotationVelocity.x) * deltaTime;
 
     composer.render();
+    if (active) requestAnimationFrame(render);
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    active = true;
+    composer = createRenderer(document.getElementById("cube"));
     requestAnimationFrame(render);
+  });
+
+  document.addEventListener("astro:before-swap", (ev) => {
+    active = false;
   });
 </script>
 
@@ -123,5 +128,18 @@
     width: 35rem;
     max-width: 30vmax;
     aspect-ratio: 1 / 1;
+  }
+
+  /* make tge cube fade in on page load */
+  canvas {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
   }
 </style>

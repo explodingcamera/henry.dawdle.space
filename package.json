@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.0.5",
+    "@astrojs/sitemap": "^3.1.1",
     "@explodingcamera/css": "^0.0.4",
     "@fontsource-variable/victor-mono": "^5.0.3",
     "@types/three": "^0.161.2",
-    "astro": "^4.4.0",
-    "postcss-preset-env": "^9.3.0",
+    "astro": "^4.4.3",
+    "postcss-preset-env": "^9.4.0",
     "postprocessing": "^6.34.3",
     "three": "^0.161.0",
     "typescript": "^5.3.3"

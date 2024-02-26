@@ -9,8 +9,8 @@ import Layout from "../layouts/Layout.astro";
       <li></li>
     </ul> -->
     <div>
-      <h1>Tools</h1>
       <ul>
+        <h1>Tools</h1>
         <li>
           >> <a href="https://lastfm-iceberg.dawdle.space">lastfm-iceberg</a>
           <p>
@@ -23,6 +23,23 @@ import Layout from "../layouts/Layout.astro";
           <p>A simple URL shortener with special rickroll features</p>
         </li>
       </ul>
+      <ul>
+        <h1>Games</h1>
+        <li>
+          >> <a href="https://github.com/dawdlestudios/hype">hype</a>
+          <p>
+            A incremental game about social media and the attention economy. Not
+            working yet.
+          </p>
+        </li>
+      </ul>
+      <!-- <ul>
+        <h1>Other Stuff</h1>
+        <li>
+          >> <a href="/running">Running</a>
+          <p>Like the Github Activity Graph but for me going on runs.</p>
+        </li>
+      </ul> -->
     </div>
     <!-- <h1>Experiments</h1>
     <ul>
@@ -47,16 +64,49 @@ import Layout from "../layouts/Layout.astro";
   main > div {
     margin-top: 2rem;
     display: flex;
-    flex-direction: column;
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 50rem;
 
     ul {
+      padding: 1rem;
+      transition: background-color 0.2s;
+
+      &:nth-child(1) {
+        /* --color: #30e2ab; */
+        --color: 48, 226, 171;
+      }
+
+      &:nth-child(2) {
+        --color: 226, 48, 171;
+      }
+
+      &:nth-child(3) {
+        --color: 226, 171, 48;
+      }
+
+      border: 1px solid rgb(var(--color));
+      background-color: rgba(var(--color), 0.03);
+      &:hover {
+        background-color: rgba(var(--color), 0.1);
+      }
+
+      height: fit-content;
+      border-radius: 15px;
+
+      min-width: 30ch;
       list-style: none;
-      padding: 0;
       margin: 0;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
 
       li p {
         font-size: 1rem;

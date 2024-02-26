@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const daysIn2024: Date[] = Array.from(
+  { length: 310 },
+  (_, i) => new Date(2024, 1, i + 26)
+);
+
+const formatDay = Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+});
+
+const formatDayValue = Intl.DateTimeFormat("en-CA", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+});
+---
+
+<Layout title="running">
+  <main>
+    <div>
+      <h2>2024</h2>
+      <div class="days">
+        {
+          daysIn2024.map((day) => (
+            <div
+              data-day={formatDayValue.format(day)}
+              title={formatDay.format(day)}
+            />
+          ))
+        }
+      </div>
+      <br />
+      <br />
+      <p>Starting 26/02/2024, I'm trying go for a run every day :)</p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    flex: 1;
+    > div {
+      max-width: 70rem;
+    }
+  }
+
+  .days {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    transition: opacity 0.8s ease-in-out;
+    opacity: 0.09;
+    &[data-loaded="true"] {
+      opacity: 1;
+    }
+
+    > div {
+      width: 1rem;
+      height: 1rem;
+      background-color: #101a1a;
+      margin: 0.2rem;
+
+      &[data-active="true"] {
+        background-color: #39d353;
+      }
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", async () => {
+    const data = await (await fetch("/runs")).text();
+    const activeDays = data.split("\n").filter(Boolean);
+    document.querySelector(".days")?.setAttribute("data-loaded", "true");
+
+    const days = document.querySelectorAll(
+      ".days > div"
+    ) as NodeListOf<HTMLDivElement>;
+
+    days.forEach((day) => {
+      if (activeDays.includes(day.dataset.day ?? "")) {
+        day.dataset.active = "true";
+      }
+    });
+  });
+</script>
