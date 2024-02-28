@@ -52,7 +52,7 @@ for (const year in photos) {
               <>
                 {photos.map((photo) => (
                   <figure class="photo">
-                    <a href={photo.meta.src} target="_blank">
+                    <a href={photo.meta.src} target="_blank" data-astro-reload>
                       <Picture
                         widths={[800, 1200]}
                         src={photo.meta}
@@ -64,7 +64,7 @@ for (const year in photos) {
                       />
                     </a>
                     <figcaption>
-                      <a href={photo.meta.src} download>
+                      <a href={photo.meta.src} download data-astro-reload>
                         download
                       </a>
                     </figcaption>
