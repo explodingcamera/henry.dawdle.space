@@ -17,9 +17,70 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title}>
-  <h1>{post.data.title}</h1>
-  <Content />
+  <main>
+    <div>
+      <h1>{post.data.title}</h1>
+      <time>
+        {
+          new Date(post.data.pubDate).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </time>
+      <section>
+        <Content />
+      </section>
+    </div>
+  </main>
 </Layout>
+
+<style>
+  main {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Linux Libertine", serif;
+
+    h1 {
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    time {
+      font-size: 1.2em;
+      color: rgba(241, 236, 236, 0.86);
+      margin-bottom: 1rem;
+    }
+
+    div {
+      margin-top: 2rem;
+      margin-bottom: 5rem;
+      max-width: 55rem;
+      padding: 0.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  section {
+    :global(p) {
+      letter-spacing: -0.003em;
+      line-height: 1.75;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      word-break: break-word;
+      font-weight: 400;
+      color: rgba(241, 236, 236, 0.86);
+    }
+  }
+</style>
 
 <!-- <BlogPost {...post.data}>
   <Content />
