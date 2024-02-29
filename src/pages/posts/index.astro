@@ -1,26 +1,113 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-import { Image } from "astro:assets";
-import underConstruction from "../../gifs/under_constructionA.gif";
 import { getCollection } from "astro:content";
 
-// const posts = (await getCollection("blog")).sort(
-//   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-// );
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
 ---
 
 <Layout title="Posts">
   <main>
-    <Image src={underConstruction} alt="under construction" />
-  </main>
-</Layout>
+    <div>
+      <p>
+        These are some personal thoughts and things I felt like writing down.
+        You can find my more “professional” posts and articles on software
+        engineering on <a href="https://blog.henrygressmann.de"
+          >blog.henrygressmann.de</a
+        >.
+      </p>
 
-<style>
-  main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
+      <ul class="posts">
+        {
+          posts.map((post) => (
+            <li>
+              <a href={`/posts/${post.slug}`}>
+                <div>
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
+                  </time>
+                  <h2>{post.data.title}</h2>
+                </div>
+                <p>{post.data.description}</p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </main>
+
+  <style>
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    main > div {
+      max-width: 60rem;
+      width: 100%;
+      padding: 0.5rem 2rem;
+      margin-top: 6rem;
+      @media (max-width: 683px) {
+        padding: 2rem;
+      }
+
+      > p {
+        opacity: 0.8;
+        line-height: 1.5;
+        margin-bottom: 4rem;
+        max-width: 38rem;
+      }
+    }
+
+    .posts {
+      list-style: none;
+      padding: 0;
+
+      font-family: "Linux Libertine Display", "Georgia", serif;
+
+      a {
+        display: flex;
+        flex-direction: column;
+      }
+
+      div {
+        margin-top: 0.2rem;
+        display: flex;
+        align-items: baseline;
+      }
+
+      time {
+        font-size: 1.6em;
+        color: #666;
+        margin-right: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        text-decoration: underline;
+        text-decoration-color: gray;
+        margin-bottom: 0.2rem;
+      }
+
+      p {
+        margin: 0;
+        font-size: 1.2rem;
+        margin-top: 0.2rem;
+        margin-bottom: 1.4rem;
+        opacity: 0.8;
+      }
+    }
+  </style>
+</Layout>

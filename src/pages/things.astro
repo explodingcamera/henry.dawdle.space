@@ -55,6 +55,14 @@ import Layout from "../layouts/Layout.astro";
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0 2rem;
+    padding-bottom: 2rem;
+
+    font-size: 1rem;
+
+    @media (max-width: 600px) {
+      font-size: 0.8rem;
+    }
 
     p {
       max-width: 25ch;
@@ -62,7 +70,6 @@ import Layout from "../layouts/Layout.astro";
   }
 
   main > div {
-    margin-top: 2rem;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
@@ -104,15 +111,16 @@ import Layout from "../layouts/Layout.astro";
       gap: 0.5rem;
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.3em;
+        opacity: 0.8;
         margin-bottom: 0.5rem;
       }
 
       li p {
-        font-size: 1rem;
-        margin-top: 0.5rem;
+        font-size: 1em;
+        margin-top: 0.3rem;
         margin-bottom: 0.5rem;
-        margin-left: 1.9rem;
+        margin-left: 1.5rem;
 
         line-height: 1.5;
       }

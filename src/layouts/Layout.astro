@@ -13,7 +13,8 @@ const url = new URL(Astro.request.url);
   <slot name="head" slot="head" />
   <header data-floating={props.floatingHeader && "true"}>
     <ul>
-      <li><a href="/"><h2>henry.dawdle.space</h2></a></li>
+      <li class="title"><a href="/"><h2>henry.dawdle.space</h2></a></li>
+      <li class="title-mobile"><a href="/"><h2>home</h2></a></li>
       <li>
         <a href="/posts" data-active={url.pathname === "/posts"}>posts</a>
       </li>
@@ -37,6 +38,19 @@ const url = new URL(Astro.request.url);
     z-index: 100;
   }
 
+  .title-mobile {
+    display: none;
+  }
+
+  @media (max-width: 450px) {
+    .title {
+      display: none;
+    }
+    .title-mobile {
+      display: block;
+    }
+  }
+
   header {
     ul {
       display: flex;
@@ -45,7 +59,8 @@ const url = new URL(Astro.request.url);
       margin: 0;
       padding: 1.5rem 1.5rem;
 
-      li:first-of-type {
+      li.title,
+      li.title-mobile {
         margin-right: auto;
 
         a {

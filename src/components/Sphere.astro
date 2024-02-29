@@ -17,17 +17,23 @@
   let dragRotationVelocity = { x: 0, y: 0 };
   let isDragging = false;
   let dragStart = { x: 0, y: 0 };
-  let lastDragTime = 0;
 
-  window.addEventListener("pointermove", (event) => {
-    if (isDragging) {
-      // Use the drag sensitivity to calculate drag rotation velocity
-      dragRotationVelocity.x = (event.clientY - dragStart.y) * dragSensitivity;
-      dragRotationVelocity.y = (event.clientX - dragStart.x) * dragSensitivity;
-      dragStart.x = event.clientX;
-      dragStart.y = event.clientY;
-    }
-  });
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      if (isDragging) {
+        event.preventDefault();
+        // Use the drag sensitivity to calculate drag rotation velocity
+        dragRotationVelocity.x =
+          (event.clientY - dragStart.y) * dragSensitivity;
+        dragRotationVelocity.y =
+          (event.clientX - dragStart.x) * dragSensitivity;
+        dragStart.x = event.clientX;
+        dragStart.y = event.clientY;
+      }
+    },
+    { passive: false }
+  );
 
   window.addEventListener("pointerup", () => {
     isDragging = false;
@@ -40,11 +46,16 @@
       throw new Error("Canvas element not found");
     }
 
-    canvas.addEventListener("pointerdown", (event) => {
-      isDragging = true;
-      dragStart.x = event.clientX;
-      dragStart.y = event.clientY;
-    });
+    canvas.addEventListener(
+      "pointerdown",
+      (event) => {
+        event.preventDefault();
+        isDragging = true;
+        dragStart.x = event.clientX;
+        dragStart.y = event.clientY;
+      },
+      { passive: false }
+    );
 
     const renderer = new WebGLRenderer({
       powerPreference: "low-power",
