@@ -2,18 +2,16 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog"))
-  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
-  .filter((post) => !post.data.draft);
+// const posts = (await getCollection("blog"))
+// 	.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+// 	.filter((post) => !post.data.draft);
 ---
 
 <Layout title="Posts">
   <main>
     <div>
       <p>
-        These are just some things I just felt like writing down for myself.
-        Mostly because I want to get better at writing and expressing my
-        thoughts.
+        Work in progress.
         <br />
         <br />
         You can find my more “professional” and polished posts mostly on software
@@ -22,7 +20,7 @@ const posts = (await getCollection("blog"))
         >.
       </p>
       <ul class="posts">
-        {
+        <!-- {
           posts.map((post) => (
             <li>
               <a href={`/posts/${post.slug}`}>
@@ -40,7 +38,7 @@ const posts = (await getCollection("blog"))
               </a>
             </li>
           ))
-        }
+        } -->
       </ul>
     </div>
   </main>

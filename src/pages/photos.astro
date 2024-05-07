@@ -9,34 +9,35 @@ import type { ImageMetadata } from "astro";
 const titles: Record<string, string> = {};
 
 const photos: Record<
-  string,
-  {
-    title: string;
-    meta: ImageMetadata;
-    createdAt: Date;
-  }[]
+	string,
+	{
+		title: string;
+		meta: ImageMetadata;
+		createdAt: Date;
+	}[]
 > = {};
 
 const dirname = new URL(".", import.meta.url).pathname;
-const files = import.meta.glob(`../../photos/*/*.+(jpg|jpeg|png|webp|avif)`);
+const files = import.meta.glob("../../photos/*/*.+(jpg|jpeg|png|webp|avif)");
 
 for await (const [filepath, file] of Object.entries(files)) {
-  const photo = ((await file()) as any).default as ImageMetadata;
-  const stats = await stat(join(dirname, filepath));
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	const photo = ((await file()) as any).default as ImageMetadata;
+	const stats = await stat(join(dirname, filepath));
 
-  const filename = filepath.split("/").pop() as string;
-  const year = filepath.split("/").slice(-2, -1).pop() as string;
-  if (!photos[year]) photos[year] = [];
+	const filename = filepath.split("/").pop() as string;
+	const year = filepath.split("/").slice(-2, -1).pop() as string;
+	if (!photos[year]) photos[year] = [];
 
-  photos[year].push({
-    title: titles[filename] || "",
-    meta: photo,
-    createdAt: stats.birthtime,
-  });
+	photos[year].push({
+		title: titles[filename] || "",
+		meta: photo,
+		createdAt: stats.birthtime,
+	});
 }
 
 for (const year in photos) {
-  photos[year].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+	photos[year].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 }
 ---
 

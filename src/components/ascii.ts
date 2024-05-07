@@ -1,3 +1,4 @@
+import { Effect } from "postprocessing";
 import {
 	CanvasTexture,
 	Color,
@@ -6,7 +7,7 @@ import {
 	Texture,
 	Uniform,
 } from "three";
-import { Effect } from "postprocessing";
+import type * as THREE from "three";
 
 const fragment = `
 uniform sampler2D uCharacters;
