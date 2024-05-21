@@ -10,19 +10,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.5",
+    "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.4",
     "@explodingcamera/css": "^0.0.4",
     "@fontsource-variable/victor-mono": "^5.0.5",
-    "@types/three": "^0.164.0",
-    "astro": "^4.7.1",
-    "lightningcss": "^1.24.1",
+    "@types/three": "^0.164.1",
+    "astro": "^4.8.6",
+    "lightningcss": "^1.25.0",
     "postprocessing": "^6.35.4",
     "squoosh": "^0.0.0",
     "three": "^0.164.1",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.1"
+    "@types/bun": "^1.1.2"
   }
 }
