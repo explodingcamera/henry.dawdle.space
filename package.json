@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.6",
-    "@astrojs/sitemap": "^3.1.4",
+    "@astrojs/sitemap": "^3.1.5",
     "@explodingcamera/css": "^0.0.4",
     "@fontsource-variable/victor-mono": "^5.0.5",
     "@types/three": "^0.164.1",
-    "astro": "^4.8.6",
+    "astro": "^4.9.1",
     "lightningcss": "^1.25.0",
     "postprocessing": "^6.35.4",
     "squoosh": "^0.0.0",
@@ -23,6 +23,6 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.2"
+    "@types/bun": "^1.1.3"
   }
 }

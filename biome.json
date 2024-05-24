@@ -1,0 +1,18 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.7.1/schema.json",
+    "files": {
+        "ignore": [
+            "**/dist/**"
+        ],
+        "include": [
+            "src/**/*.ts",
+            "src/**/*.tsx",
+            "src/**/*.astro"
+        ]
+    },
+    "formatter": {
+        "indentStyle": "tab",
+        "indentWidth": 2,
+        "lineWidth": 100
+    }
+}

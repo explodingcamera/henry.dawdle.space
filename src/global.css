@@ -21,7 +21,7 @@ a {
 
 @font-face {
   font-family: "Linux Libertine";
-  src: url("font/linuxlibertine/LinLibertineBI.woff2") format("woff2");
+  src: url("/font/linuxlibertine/LinLibertineBI.woff2") format("woff2");
   font-weight: bold;
   font-style: italic;
   font-display: swap;
