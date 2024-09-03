@@ -14,15 +14,15 @@
     "@astrojs/sitemap": "^3.1.6",
     "@explodingcamera/css": "^0.0.4",
     "@fontsource-variable/victor-mono": "^5.0.6",
-    "@types/three": "^0.167.2",
-    "astro": "^4.14.3",
+    "@types/three": "^0.168.0",
+    "astro": "^4.15.2",
     "lightningcss": "^1.26.0",
-    "postprocessing": "^6.36.0",
+    "postprocessing": "^6.36.1",
     "squoosh": "^0.0.0",
-    "three": "^0.167.1",
+    "three": "^0.168.0",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.6"
+    "@types/bun": "^1.1.8"
   }
 }
