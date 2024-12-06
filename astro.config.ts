@@ -1,4 +1,4 @@
-import { defineConfig, squooshImageService } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -10,6 +10,6 @@ export default defineConfig({
 		css: { transformer: "lightningcss" },
 	},
 	image: {
-		service: squooshImageService(),
+		service: sharpImageService(),
 	},
 });
