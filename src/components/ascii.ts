@@ -1,12 +1,5 @@
 import { Effect } from "postprocessing";
-import {
-	CanvasTexture,
-	Color,
-	NearestFilter,
-	RepeatWrapping,
-	Texture,
-	Uniform,
-} from "three";
+import { CanvasTexture, Color, NearestFilter, RepeatWrapping, Texture, Uniform } from "three";
 import type * as THREE from "three";
 
 const fragment = `
@@ -79,18 +72,12 @@ export class ASCIIEffect extends Effect {
 		const charactersTextureUniform = this.uniforms.get("uCharacters");
 
 		if (charactersTextureUniform) {
-			charactersTextureUniform.value = this.createCharactersTexture(
-				characters,
-				fontSize,
-			);
+			charactersTextureUniform.value = this.createCharactersTexture(characters, fontSize);
 		}
 	}
 
 	/** Draws the characters on a Canvas and returns a texture */
-	public createCharactersTexture(
-		characters: string,
-		fontSize: number,
-	): THREE.Texture {
+	public createCharactersTexture(characters: string, fontSize: number): THREE.Texture {
 		const canvas = document.createElement("canvas");
 
 		const SIZE = 1024;

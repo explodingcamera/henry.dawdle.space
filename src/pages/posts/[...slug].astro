@@ -4,11 +4,11 @@ import Layout from "../../layouts/Layout.astro";
 // import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
 }
 type Props = CollectionEntry<"blog">;
 
@@ -68,8 +68,7 @@ const { Content } = await post.render();
     }
   }
 
-  section {
-    :global(p) {
+  section p {
       letter-spacing: -0.003em;
       line-height: 1.75;
       margin-top: 0;
@@ -78,7 +77,6 @@ const { Content } = await post.render();
       word-break: break-word;
       font-weight: 400;
       color: rgba(241, 236, 236, 0.86);
-    }
   }
 </style>
 

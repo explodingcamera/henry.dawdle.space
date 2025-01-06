@@ -1,20 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const daysIn2024: Date[] = Array.from(
-  { length: 310 },
-  (_, i) => new Date(2024, 1, i + 26)
-);
+const daysIn2024: Date[] = Array.from({ length: 310 }, (_, i) => new Date(2024, 1, i + 26));
 
 const formatDay = Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
+	month: "short",
+	day: "numeric",
 });
 
 const formatDayValue = Intl.DateTimeFormat("en-CA", {
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
+	year: "numeric",
+	month: "2-digit",
+	day: "2-digit",
 });
 ---
 

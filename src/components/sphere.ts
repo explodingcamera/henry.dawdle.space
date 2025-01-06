@@ -24,11 +24,7 @@ export const createSphere = () => {
 		positionAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
 
 		// Assign a color to each vertex
-		color.setRGB(
-			0.5 + Math.random() * 0.5,
-			0.5 + Math.random() * 0.5,
-			0.5 + Math.random() * 0.5,
-		);
+		color.setRGB(0.5 + Math.random() * 0.5, 0.5 + Math.random() * 0.5, 0.5 + Math.random() * 0.5);
 
 		colors.push(color.r, color.g, color.b);
 	}
