@@ -15,17 +15,19 @@
     "@biomejs/biome": "^1.9.4",
     "@explodingcamera/css": "^0.0.4",
     "@fontsource-variable/victor-mono": "^5.1.1",
-    "@types/three": "^0.172.0",
-    "astro": "^5.1.4",
-    "lightningcss": "^1.29.0",
-    "postprocessing": "^6.36.6",
-    "three": "^0.172.0",
+    "@types/three": "^0.173.0",
+    "astro": "^5.2.5",
+    "lightningcss": "^1.29.1",
+    "postprocessing": "^6.36.7",
+    "three": "^0.173.0",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.16"
+    "@types/bun": "^1.2.2"
   },
   "trustedDependencies": [
-    "@biomejs/biome"
+    "@biomejs/biome",
+    "esbuild",
+    "sharp"
   ]
 }
