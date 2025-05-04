@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 bun run build
-rsync -avzP dist/ dawdle:~/public
+rsync -avzP dist/ genoa:~/dawdle/sites/fszs3e8axm
